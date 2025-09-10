@@ -23,4 +23,4 @@ const analytics = getAnalytics(app);
 // Initialize Auth + Google Provider
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
-export const dataBase = getFirestore(app);
+export const dB = getFirestore(app);

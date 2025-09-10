@@ -1,9 +1,8 @@
-
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addDoc, collection } from "firebase/firestore";
-import { auth, dataBase } from "../../config/firebase";
+import { auth, dB } from "../../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -29,11 +28,11 @@ export const CreateForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const postsRef = collection(dataBase, "posts");
+  const postsRef = collection(dB, "posts");
 
   const onCreatePost = async (data: CreateFormData) => {
     await addDoc(postsRef, {
-      ...data,//title :data.title , description:data.description
+      ...data,
       username: user?.displayName,
       userId: user?.uid,
     });
